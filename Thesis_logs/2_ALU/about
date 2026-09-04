@@ -1,0 +1,14 @@
+ALU
+This part is about building a working 16 bit adder, that can add two 16 bit numbers and give correct output, then simple incrementor is built of combinational logic. Later student focuses on building ALU according to the specification. 
+
+Logic to accomplish building: 
+
+1. HalfAdder
+2. FullAdder
+3. Add16    (16 bit version of FullAdder, will be in the AlU implementation)
+4. Inc16    (increments a 16 bit value by 1)
+5. ALU	    (specification for it provided in the screenshots file)
+
+ALU specification is a part of a contract to the computer system that makes up the computational logic. ALU that is built is a minimal usability, but with additional changes to the whole computer system like adding iteration on program counter, it can achieve great functionality. 		
+
+
