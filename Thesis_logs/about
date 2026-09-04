@@ -1,0 +1,22 @@
+Module B199 / Thesis Project 
+
+Briefly about the project. 
+Student is building, designing, testing a computer system, that combines both hardware and software aspects. 
+First principles of boolean algebra and fundamental psychics knowledge are utilised to build hardware components in the Logisim evolution simulator, please have the Logisim setup ready, or use the screenshots that student provides for each circuit. 
+On a software level, assembler is built via high level language(Java) to showcase the interfaces that exist in between software and hardware.      
+
+This particular repository contains major milestones/step by step logs. 
+
+Building a project like this requires a detailed plan. First principle analysis is a method that was used to think through the concept of computers to build the final result. Divide and Conquer is also one of the approaches used to solve this complex problem. Simplifying a big problem, which is a computer system, into small building blocs, and putting them together like a puzzle. 
+
+Structure of this repo is as follows according to analysis methods used(Broke down a computer system to underlying smaller concepts):
+
+1. Elementary logic   
+2. ALU
+3. Memory
+4. Assembley language 
+5. Hardware computer
+6. Assembler 
+
+Research and analysis. 
+7. Research questions and further Analysis (Related to research questions, methods, testing e.t.c)
