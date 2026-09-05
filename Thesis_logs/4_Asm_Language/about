@@ -1,0 +1,22 @@
+4. Assembly Language Specification. 
+
+Assembly language presented in this section was not a plot of a student's creation, rather a tool that was used to implement programs for testing the overall computer architecture and assembler. The language itself is not claimed as an original contribution of the student. Instead, it was used as a practical interface between the computer hardware and the programs executed by it. Its specification was also required for the implementation and validation of the assembler.
+
+
+The assembly language provides human-readable representations of the computer’s binary instructions. Its main elements include:
+
+1. Address instructions(A instruction) – used to specify a constant value or select a memory address.
+2. Computation instructions(C instruction) – used to perform the arithmetic and logical operations supported by the ALU.
+3. Destination specification – determines where the result of an operation is stored, such as a CPU register or memory location.
+4. Jump instructions – modify the program counter when a specified condition is satisfied.
+5. Symbols and labels – provide readable names for addresses and program locations, reducing the need to use numerical addresses directly.
+6. Comments and formatting rules – improve source-code readability without affecting the generated machine code.
+7. Language specification also defines a set of predefined symbols.
+
+Each assembly command is translated by the assembler into a binary command. 
+Assembly language directly interferes with the computer memory(through the A instruction).
+Most of the times it's either direct addressing or label addressing(the last is done mainly via assembler, it assigns addresses to labels).   
+Assembly language can also work with the input/output devices(keyboard and screen). 
+Screen is represented as a consequent memory chunk of bits in Ram space, called a display memory map. Same for the keyboard, but it's a single register.   
+
+Screenshots of the language specification and test programs that show how assembly language is utilised can be found in the respective folders - "AsmL_specification", "test_programs".
