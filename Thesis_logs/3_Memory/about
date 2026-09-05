@@ -7,7 +7,8 @@ Units to build:
 2. Register	(16 bit register, made out of 16 D flip flops), later presented as a standard library unit from Logisim-evolution environment, due to optimisation reasons. 
 3. Ram8		(eight 16-bit registers)
 4. Ram64        (Presented to show how the registers scale the memory)
-8. Ram64k	(65.536 16-bit registers, this allows 16 bits for addressing, same principle as Ram64 and Ram8, but presented as a Logisim-evolution standard library unit, because the simulator can not process hundreds of registers, mux's, e.t.c at the same time) 
+5. Ram64k	(65.536 16-bit registers, this allows 16 bits for addressing, same principle as Ram64 and Ram8, but presented as a Logisim-evolution standard library unit, because the simulator can not process hundreds of registers, mux's, e.t.c at the same time) 
+6. PC (program counter)
 
 The standard construction begins with an asynchronous bistable latch—one that operates independently of the clock signal and can remain in either of two stable states, thereby storing a 0 or a 1, this is also called - feedback. A synchronous flip-flop is then created by connecting two such asynchronous latches in sequence. The first latch is activated when the clock signal rises, while the second is activated when it falls. This master–slave design enables the flip-flop to operate in synchronisation with the system clock.
 
