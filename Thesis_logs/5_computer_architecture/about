@@ -1,0 +1,18 @@
+5. Computer Architecture
+
+This section is the end point for the hardware part of the computer system that student implements as a part of the design approach and contribution to the students community. This particular computer is based on two fundamental principles:
+
+1. Stored program principle.
+2. Harvard architecture - computer uses two memory spaces. One dedicated to instructions that are pretty much preloaded "burned" into the ROM unit, manually put in. Another one is for the data, and is located in the RAM.  
+
+Construction of a fully functional computer system requires core elements that were built in previous parts those include - elementary logic gates, Ram64k, PC, ALU. 
+Assembly specification plays crucial role in construction of a control bus and a cpu that decodes the C instruction. 
+Moreover some new parts must be implemented to make the whole system work:
+
+1. CPU - main component that combines PC, decode unit(which is essentially a splitter that fans out the bits to corresponding units of execution), ALU, control bits that define the jump, and 2 registers that serve a purpose of storing address, and data from ALU and Memory, those registers are called A and D respectively.
+2. Memory - Rom64k and Ram64k - 16 bits used for addressing an instruction at ROM and RAM.
+3. Computer - pinnacle of hardware architecture(constructed from CPU, Rom64k, Ram64k).Allows to computer test programs excluding the software with input/output workflows. 
+
+This integration completes the hardware architecture and provides the platform required for system-level testing.
+
+ 
