@@ -1,4 +1,4 @@
-Elementary logic. 
+1. Elementary logic. 
 This particular part consists of boolean algebra and elementary logic gates that make up the harder blocks of computer, for instance: memory, ALU, e.t.c. Fundamental logic is used in every computer. This particular implementation of a computer system starts with a Nand gate. Nand gate has an ability to make up the logic for other gates this is due to its functional completeness, meaning that any boolean function can be constructed using only Nand operations. Since the Not, And, Or operations can all be constructed from Nand gates, Nand can serve as the only elementary building block required to implement any Boolean function and, consequently, more complex computer components - Mux, DMux, 16 bit variations and e.t.c by simply concatenating multiple logic gates together into a single wire. Further, from the listed logic gates the main components like ALU and Memory will be constructed.
 
 Logic gates that are built: 
@@ -25,6 +25,7 @@ Intputs and Outputs are labeled as:
 Depending on the logic provided. 
 I - input
 O - output
-A and B inputs, e.t.c. 
+A and B inputs, e.t.c.
+
 There are also 16 bit versions of those gates. Can be distinguished by the input, gate, and output characteristics in the Logisim-evolution simulator tool. 
 Inupts and Outputs are sometimes binary and sometimes hexadecimal, check the postfix b or h. 
