@@ -1,0 +1,14 @@
+6. Assembler
+
+This section presents a basic assembler that translates assembly instructions into 16-bit machine code executable by the computer. It recognises A- and C-instructions, parses their components, and converts operation, destination, and jump mnemonics into binary fields. This version supports only numerical addresses; symbolic labels, variables, and symbol-table processing are not implemented. 
+
+Java source code of and assembler is located in the Java_assembler file. 
+Source code - Assembler.java 
+
+Main method is reading command line arguments for the "intputFile" that contains mnemonics. 
+
+How to start the program: 
+java Assembler Program.asm
+
+
+Small test file is in the same folder. 
