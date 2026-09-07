@@ -6,11 +6,12 @@ Logic to accomplish building:
 
 1. HalfAdder
 2. FullAdder
-3. Add16    (16 bit version of FullAdder, will be in the AlU implementation)
-4. Inc16    (increments a 16 bit value by 1)
-5. ALU	    (specification for it provided in the screenshots file)
+3. Add16 - 16 bit version of FullAdder, will be in the AlU implementation.
+4. Inc16 - increments a 16 bit value by 1.
+5. ALU - specification for it provided in the screenshots file.
 
 ALU specification is a part of a contract to the computer system that makes up the computational logic.
-ALU that is built is a minimal usability, but with additional changes to the whole computer system like adding iteration on program counter, it can achieve great functionality. 		
+ALU that is built has minimal utility, but with additional changes to the whole computer system like adding iteration steps with the help of program counter,
+it can achieve great functionality. 		
 
 
