@@ -2,7 +2,7 @@ Module B199 / Thesis Project
 
 Briefly about the project. 
 Student is building, designing, testing a computer system, that combines both hardware and software aspects. 
-First principles of boolean algebra and fundamental psychics knowledge are utilised to build hardware components in the Logisim evolution simulator.
+First principles of boolean algebra and fundamental logic gates knowledge are utilised to build hardware components in the Logisim evolution simulator.
 Please have the Logisim setup ready, or use the screenshots that student provides for each circuit. 
 On a software level, assembler is built via high level language(Java) to showcase the interfaces that exist in between software and hardware.      
 
