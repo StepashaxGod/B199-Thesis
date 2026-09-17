@@ -22,3 +22,50 @@ Structure of this repo is as follows according to analysis methods used(Broke do
 
 Research and analysis. 
 7. Research questions and further Analysis (Related to research questions, methods, testing e.t.c)
+This section documents the research direction, evaluation criteria, testing procedures, and comparative analysis of the implemented minimal computing system.
+The research combines simulation-based evaluation with comparative benchmarking.
+The implemented computer will first be tested and measured independently, then compared with selected open-source minimal computing system.
+The purpose is to investigate how architectural differences affect the computational cost of executing equivalent algorithms with identical input data.
+The research focuses on simulated architectural behaviour rather than physical processor speed or power consumption.
+Research questions are as follows: 
+1. How does the developed system perform when executing representative computational workloads?
+2. How does its performance compare with selected minimal computing systems under equivalent workloads?
+3. Which architectural characteristics explain the observed performance differences?
+Metrics that are used to compare systems: 
+This research adopts: This research adopts clock-cycle count, executed instruction count, instructions per cycle, and cycles per instruction from that evaluation approach.
+All metrics: 
+	• Correctness — whether the benchmark produces the expected result.
+	•	Execution cycles / clock ticks — total cycles required to finish the workload.
+	•	Dynamic instruction count — total instructions actually executed, including repeated loop instructions.
+	•	CPI (Cycles Per Instruction) = execution cycles / dynamic instructions.
+	•	IPC (Instructions Per Cycle) = dynamic instructions / execution cycles.
+	•	Dynamic branch count — number of branch/jump instructions executed. Hutchens also records branches separately from branch-prediction misses.
+	•	Memory reads — number of data-memory read operations.
+	•	Memory writes — number of data-memory write operations.
+	•	Total memory accesses = reads + writes.
+	•	Static instruction count / machine-code size — number of instructions stored in the program ROM; if your instructions are 16-bit, you can also express this in bytes.
+
+Hutchens directly demonstrates the usefulness of clock ticks, executed instructions, CPI, IPC, and branches in Logisim-based processor evaluation
+
+CPI and IPC are reciprocal measures calculated from the same counts. They will not be treated as independent evidence of performance.
+If the implemented processor completes one instruction per cycle, both may remain equal to one across workloads.
+A lower CPI alone does not establish that one architecture completes a task more efficiently: the total instruction count must also be considered.
+Cache statistics, branch-prediction misses, and pipeline-specific statistics are outside the evaluation scope.
+
+Benchmark programs for testing (different types of computation).
+Each algorithm will use the same input values and expected output across systems.
+
+Measurment procedure.
+Clock cycles will be counted using a defined CPU clock edge, rather than assuming that every simulator tick represents a full cycle.
+Instructions will be counted when they complete.
+
+Data-memory accesses will exclude instruction fetches. Reads will be counted when an instruction consumes a memory value, rather than whenever a combinational memory output changes.
+Writes will be counted when a write is committed.
+
+Comparing the systems and interpreting the results.
+Comparison systems will be selected according to available source files, documentation, simulator accessibility, and support for the chosen workloads.
+The analysis will examine register availability, instruction-set capabilities, datapath organisation, control logic, and memory interaction.
+Observed differences will be supported by instruction listings and execution traces. Since multiple architectural features may differ simultaneously,
+explanations will distinguish demonstrated behaviour from possible causes.
+Cycle counts will not be presented as physical execution times. Simulator speed and configured tick frequency will not be used to claim hardware speed advantages.
+
