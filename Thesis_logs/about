@@ -22,12 +22,11 @@ Structure of this repo is as follows according to analysis methods used(Broke do
 
 Research and analysis. 
 7. Research questions and further Analysis.
-This section outlines the research direction for evaluating the implemented minimal computing system through simulation-based testing and comparative benchmarking.
-The system will be assessed using equivalent computational workloads and metrics such as execution cycles, dynamic instruction count, CPI, IPC, branch activity, and memory accesses and other metrics, added from sources or personally explained.
-The comparison will focus on how architectural characteristics, including register organisation, instruction-set capabilities, datapath structure, control logic, and memory interaction, influence computational cost.
-A detailed description of the research questions, benchmark programs, measurement procedures, comparison criteria, and interpretation of results is provided in a separate research and analysis document.
-Research questions:
-1. How does the developed system perform when executing representative computational workloads?
-2. How does its performance compare with selected minimal computing systems under equivalent workloads?
-3. Which architectural characteristics explain the observed performance differences?
+This section outlines the evaluation of the implemented minimal computing system through simulation-based testing and comparative benchmarking.
+The developed system will be compared with another minimal computing system using equivalent workloads. Metrics include correctness, execution cycles,
+dynamic instruction count, CPI, IPC, branch count, memory reads and writes, total memory accesses, static instruction count, and machine-code size.
+The comparison will examine how ISA design, register organisation, datapath structure, memory organisation, and control logic influence computational behaviour.
 
+Research questions:
+1. How does the developed system differ from another minimal system when executing equivalent workloads?
+2. Which architectural design choices explain the observed differences?
