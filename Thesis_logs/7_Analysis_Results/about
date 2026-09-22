@@ -1,5 +1,6 @@
-Research and Analysis
+Analysis files include: Authors developed computer, and " " computer that makes the comparison possible to evaluate the tradeoffs that systems have.
 
+Research and Analysis
 The research uses simulation-based experimental evaluation combined with comparative benchmarking, simulation that involves the metrics to evaluate both systems. The developed minimal computing system is first implemented and validated, then compared with another minimal computing system using equivalent workloads.
 
 Research Questions
@@ -9,14 +10,13 @@ Research Questions
 Metrics
 The following metrics are used:
 
-* Correctness — whether the benchmark produces the expected output.
-* Execution cycles / clock cycles — total number of processor cycles required to complete the workload.
+* Execution cycles — total number of processor cycles required to complete the workload.
 * Dynamic instruction count — total number of instructions actually executed, including repeated loop instructions.
 * CPI (Cycles Per Instruction) — execution cycles divided by dynamic instruction count.
 * IPC (Instructions Per Cycle) — dynamic instruction count divided by execution cycles.
 * Dynamic branch count — total number of branch and jump instructions executed.
-* Memory reads** — number of data-memory read operations.
-* Memory writes** — number of data-memory write operations.
+* Memory reads — number of data-memory read operations.
+* Memory writes — number of data-memory write operations.
 * Total memory accesses — memory reads plus memory writes.
 * Static instruction count — total number of instructions stored in the benchmark program.
 * Machine-code size — total size of the assembled benchmark program stored in instruction memory.
