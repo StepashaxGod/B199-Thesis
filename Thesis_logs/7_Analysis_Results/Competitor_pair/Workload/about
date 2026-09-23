@@ -10,6 +10,51 @@ Fibonacci examines repeated arithmetic operations, loop control and the storage 
 | Bubble Sort | "5 1 8 3 6 2 7 4" | "1 2 3 4 5 6 7 8"           |
 
 All memory addresses and stop addresses below are hexadecimal. Input values and instruction counts are decimal.
+====================================================================================================================================================================================================
+Fibonacci — both ISA implementations
+
+
+a = 0
+b = 1
+
+repeat 17 times:
+    temp = a + b
+    a = b
+    b = temp
+
+result = b
+stop
+
+====================================================================================================================================================================================================
+Bubble Sort — both ISA implementations
+
+array = [5, 1, 8, 3, 6, 2, 7, 4]
+bound = 7
+
+while bound > 0:
+    swapped = false
+    pointer = address of array[0]
+    remaining = bound
+
+    while remaining > 0:
+        left = memory[pointer]
+        right = memory[pointer + 1]
+
+        if left > right:
+            memory[pointer] = right
+            memory[pointer + 1] = left
+            swapped = true
+
+        pointer = pointer + 1
+        remaining = remaining - 1
+
+    if swapped == false:
+        break
+
+    bound = bound - 1
+
+stop (HLT)
+====================================================================================================================================================================================================
 
 Fibonacci
 
