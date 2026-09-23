@@ -1,0 +1,137 @@
+Workloads for Comparative Evaluation
+
+Two algorithms are used to compare the author-designed computer and the Mano Basic Computer: iterative Fibonacci with n = 18 and Bubble Sort of an eight-element array. Each algorithm is implemented in assembly language for both systems, with corresponding HEX files for execution in Logisim Evolution.
+
+Fibonacci examines repeated arithmetic operations, loop control and the storage of intermediate values. Bubble Sort additionally examines array addressing, comparisons, conditional control flow and memory writes. Both systems execute the same high-level algorithms with identical inputs.
+
+| Workload    | Input             | Expected result             |
+| ----------- | ----------------- | --------------------------- |
+| Fibonacci   | n = 18            | 2584 decimal, or "0A18" HEX |
+| Bubble Sort | "5 1 8 3 6 2 7 4" | "1 2 3 4 5 6 7 8"           |
+
+All memory addresses and stop addresses below are hexadecimal. Input values and instruction counts are decimal.
+
+Fibonacci
+
+The Fibonacci program starts with "a = 0" and "b = 1". Each iteration calculates their sum and updates the two values. After 17 iterations, the program stores F(18) = 2584.
+
+The program calculates a single Fibonacci number rather than storing the complete sequence. Its intermediate Fibonacci values fit within 14 unsigned bits. Both computers retain their 16-bit architecture; this value restriction does not apply to instruction encodings or internal control values.
+
+Bubble Sort
+
+The sorting program processes the array "5 1 8 3 6 2 7 4" in ascending order. It compares adjacent elements and exchanges them when the left element is larger. After each pass, the comparison boundary decreases. Execution ends early if a pass produces no exchanges.
+
+
+Program Files
+
+| System                   | Workload          | Assembly file       | HEX file                 | Loading destination |
+| ------------------------ | ----------------- | ------------------- | ------------------------ | ------------------- |                           
+| Author-designed computer | Fibonacci         | "Author_fib_18.asm" | "Author_fib_18.hex"      | Instruction ROM     |
+| Author-designed computer | Bubble Sort       | "Author_bubble.asm" | "Author_bubble.hex"      | Instruction ROM     |
+| Author-designed computer | Bubble Sort input | —                   | "Author_bubble_data.hex" | Data RAM            |
+| Mano Basic Computer      | Fibonacci         | "mano_fib_18.asm"   | "mano_fib_18.hex"        | Shared RAM          |
+| Mano Basic Computer      | Bubble Sort       | "mano_bubble.asm"   | "mano_bubble.hex"        | Shared RAM          |
+
+The author-designed computer uses separate instruction and data memories. Its Bubble Sort program therefore requires separate code and data images. Mano uses shared memory, so each HEX image contains both the program and its required data.
+
+All HEX images load from address zero. Padding words must be preserved because they place data at the addresses expected by the instructions.
+
+Running the Author-Designed Computer
+
+| Setting         | Fibonacci   | Bubble Sort                               |
+| --------------- | ----------- | ----------------------------------------- |
+| Initial PC      | "0000"      | "0000"                                    |
+| "STOP_ADDRESS"  | "0022"      | "003F"                                    |
+| "STOP_ENABLE"   | "1"         | "1"                                       |
+| Result location | RAM["0014"] | RAM["0100–0107"]                          |
+| Expected result | "0A18"      | "0001 0002 0003 0004 0005 0006 0007 0008" |
+
+1. Disable automatic clock ticks and set "MEASURE = 0".
+2. Load the selected program HEX file into instruction ROM using Load Image.
+3. For Bubble Sort, also load "Author_bubble_data.hex" into data RAM.
+4. Set "STOP_ADDRESS" according to the table and set "STOP_ENABLE = 1".
+5. Set "reset = 1", advance one complete clock cycle, and return "reset" to "0". Confirm that "PC_VALUE = 0000".
+6. Clear the statistics by setting "STAT_RESET = 1", then "0".
+7. Set "MEASURE = 1" and enable automatic clock ticks.
+8. Wait until "HALTED = 1", then disable automatic ticks and set "MEASURE = 0".
+9. Check the result in RAM before recording the statistics.
+
+"STOP_ADDRESS" identifies the first address that must not execute. It is not the number of dynamically executed instructions. At this address, the stop controller holds the processor state, memory writes and statistics.
+Authors computer does not have the HALT instruction like the Basic computer, therefore additional logic was made for to execute statistics properly. 
+
+Before repeating Bubble Sort, reload its data image. Resetting the PC or counters does not restore the original array.
+
+Running the Mano Basic Computer
+
+| Setting                      | Fibonacci      | Bubble Sort                               |
+| ---------------------------- | -------------- | ----------------------------------------- |
+| Initial PC                   | "000"          | "000"                                     |
+| Initial sequence counter, SC | "0"            | "0"                                       |
+| Interrupts                   | Disabled       | Disabled                                  |
+| Termination                  | "HLT" at "013" | "HLT" at "02E"                            |
+| Result location              | RAM["026"]     | RAM["100–107"]                            |
+| Expected result              | "0A18"         | "0001 0002 0003 0004 0005 0006 0007 0008" |
+
+1. Disable automatic clock ticks and keep the processor stopped with "S/RUN = 0".
+2. Reset the processor and confirm that "PC = 000", "SC = 0", and interrupts are disabled.
+3. Load the selected Mano HEX file into shared RAM using Load Image.
+4. Release the processor reset controls.
+5. Set "MEASURE = 0", clear the statistics using "STAT_RESET = 1" followed by "0", and then set "MEASURE = 1".
+6. Activate the circuit’s start control and enable automatic clock ticks.
+7. Allow the program to execute its "HLT" instruction.
+8. Confirm that the processor has stopped, disable automatic ticks and set "MEASURE = 0".
+9. Check the result in RAM before recording the statistics.
+
+Mano stops using its own "HLT" instruction and does not require a separate stop address. Its PC may point to the instruction after "HLT", so termination should be confirmed through the processor’s running state.
+
+Reload "mano_bubble.hex" before each sorting run to restore the original array.
+
+Assembly and Machine-Code Information
+
+Each ASM file contains the readable assembly source for its corresponding HEX program. Each executable assembly instruction translates into one 16-bit machine word, represented by four hexadecimal digits and occupying 2 bytes.
+
+Comments, labels and assembler directives do not count as processor instructions. Data declarations occupy memory but are not executable instructions.
+
+| Program            | Static instructions | Instruction size | Machine-code size | Code addresses, HEX |
+| ------------------ | ------------------: | ---------------: | ----------------: | ------------------- |
+| Author Fibonacci   |                  34 |          16 bits |          68 bytes | "0000–0021"         |
+| Author Bubble Sort |                  63 |          16 bits |         126 bytes | "0000–003E"         |
+| Mano Fibonacci     |                  20 |          16 bits |          40 bytes | "000–013"           |
+| Mano Bubble Sort   |                  47 |          16 bits |          94 bytes | "000–02E"           |
+
+These are static instruction counts: the number of instructions stored in each program. Instructions inside loops can execute repeatedly, so these counts do not describe the total number executed during a run. The Mano counts include the final "HLT" instruction.
+
+ Assembly Format
+
+| Feature                                  | Author-designed computer                    | Mano Basic Computer        |
+| ---------------------------------------- | ------------------------------------------- | -------------------------- |
+| Address notation in ASM                  | Decimal numerical "@" operands              | Hexadecimal operands       |
+| Comments                                 | "//"                                        | "/"                        |
+| Address references in the supplied files | Numerical addresses without symbolic labels | Numerical addresses        |
+| Data placement                           | Separate RAM image for Bubble Sort          | "ORG" and "HEX" directives |
+| Program termination                      | External stop-address controller            | "HLT" instruction          |
+
+For example, "@16" in the author’s assembly refers to decimal address 16, which appears as "0010" in hexadecimal. In Mano assembly, "LDA 020" refers to hexadecimal address "020", or decimal 32.
+
+Mano’s "ORG" directive specifies where subsequent words are placed, "HEX" defines a data word, and "END" marks the end of the assembly source. These directives are processed by the assembler and are not executed by the processor.
+
+
+
+HEX Image Layout
+
+The header identifies the file format and does not occupy simulated memory.
+
+| HEX file                 | Words in image | Represented memory size | Contents                                             |
+| ------------------------ | -------------: | ----------------------: | ---------------------------------------------------- |
+| "Author_fib_18.hex"      |             34 |                68 bytes | Instructions only                                    |
+| "Author_bubble.hex"      |             63 |               126 bytes | Instructions only                                    |
+| "Author_bubble_data.hex" |            264 |               528 bytes | 256 zero-filled words followed by 8 array elements   |
+| "mano_fib_18.hex"        |             39 |                78 bytes | 20 instructions, 12 padding words and 7 data words   |
+| "mano_bubble.hex"        |            264 |               528 bytes | 47 instructions, 198 padding words and 19 data words |
+
+Memory-image size is different from machine-code size. Padding preserves the required addresses but does not represent additional instructions. For example, "Author_bubble_data.hex" places the array at address "0100" by including 256 preceding words.
+
+These sizes describe the memory words represented by the files. They are not the disk sizes of the HEX text files, which also contain hexadecimal characters, spaces, line breaks and the format header.
+
+
+

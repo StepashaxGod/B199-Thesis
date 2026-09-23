@@ -1,0 +1,35 @@
+Benchmark Results
+
+The following results were recorded for Fibonacci with n = 18 and Bubble Sort of "5 1 8 3 6 2 7 4", sorted in ascending order.
+
+| Workload    | Computer            | ExecutionCycles | DynamicInstructions | DynamicBranchCount | MemoryReads | MemoryWrites |
+| ----------- | ------------------- | --------------: | ------------------: | -----------------: | ----------: | -----------: |
+| Fibonacci   | Author-designed     |             390 |                 390 |                 18 |         104 |           72 |
+| Fibonacci   | Mano Basic Computer |             916 |                 163 |                 33 |          88 |           72 |
+| Bubble Sort | Author-designed     |             879 |                 879 |                 37 |         296 |          159 |
+| Bubble Sort | Mano Basic Computer |            3330 |                 654 |                 54 |         314 |          184 |
+
+Additional Metrics
+
+| Workload    | Computer            | StaticInstructions | CodeSizeBytes |  CPI |   IPC | TotalDataMemoryAccesses |
+| ----------- | ------------------- | -----------------: | ------------: | ---: | ----: | ----------------------: |
+| Fibonacci   | Author-designed     |                 34 |            68 | 1.00 | 1.000 |                     176 |
+| Fibonacci   | Mano Basic Computer |                 20 |            40 | 5.62 | 0.178 |                     160 |
+| Bubble Sort | Author-designed     |                 63 |           126 | 1.00 | 1.000 |                     455 |
+| Bubble Sort | Mano Basic Computer |                 47 |            94 | 5.09 | 0.196 |                     498 |
+
+The additional metrics are calculated as follows:
+
+CPI = ExecutionCycles / DynamicInstructions.
+IPC = DynamicInstructions / ExecutionCycles.
+TotalDataMemoryAccesses = MemoryReads + MemoryWrites.
+CodeSizeBytes = StaticInstructions × 2, excluding data and padding.
+
+Interpretation
+
+The author-designed computer required fewer execution cycles for both workloads, while Mano executed fewer instructions and used smaller machine code. This reflects the distinction between the author’s single-cycle implementation and Mano’s multicycle execution.
+
+For Fibonacci, Mano recorded fewer data-memory reads and the same number of writes. For Bubble Sort, the author-designed computer recorded fewer reads and writes. The memory-access advantage therefore depended on the workload.
+
+Mano required approximately 2.35 times as many cycles for Fibonacci and 3.79 times as many cycles for Bubble Sort. These are cycle-count ratios, not physical speedups, execution time also depends on the clock period.
+
