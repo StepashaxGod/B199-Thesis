@@ -25,11 +25,11 @@ public class Assembler
 
         if (inputFile.endsWith(".asm"))
         {
-            outputFile = inputFile.substring(0, inputFile.length() - 4) + ".bin";
+            outputFile = inputFile.substring(0, inputFile.length() - 4) + ".hex";
         } 
         else
         {
-            outputFile = inputFile + ".bin";
+            outputFile = inputFile + ".hex";
         }
 
         BufferedReader input = new BufferedReader(new FileReader(inputFile));
@@ -120,8 +120,11 @@ public class Assembler
                 // translator 
                 binary = "111" + compTable.get(comp) + destTable.get(dest) + jumpTable.get(jump);
             }
+            // converting 16-bit binary instruction to hexadecimal
+            int hexValue = Integer.parseInt(binary, 2);
+            String hex = String.format("%04X", hexValue);
 
-            output.write(binary);
+            output.write(hex);
             output.newLine();
         }
 
