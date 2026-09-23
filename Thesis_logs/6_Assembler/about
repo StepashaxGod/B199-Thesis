@@ -13,4 +13,5 @@ How to start the program:
 java Assembler Program.asm
 
 
-Files for testing the system are located within Java_assembler file. 
+Files for testing the system are located in Computer_Validation_Tests file.
+One can run those programs in Assembler and get corresponding hex file to insert into the ROM, but dont forget to put values in RAM if you have input values that work with memory.
