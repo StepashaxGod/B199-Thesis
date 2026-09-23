@@ -1,12 +1,14 @@
 Analysis files include: Authors developed computer, and " " computer that makes the comparison possible to evaluate the tradeoffs that systems have.
 
 Research and Analysis
-The research uses simulation-based experimental evaluation combined with comparative benchmarking, simulation that involves the metrics to evaluate both systems. The developed minimal computing system is first implemented and validated, then compared with another minimal computing system using equivalent workloads.
+The research uses simulation-based experimental evaluation combined with comparative benchmarking, simulation that involves the metrics to evaluate both systems.
+The developed minimal computing system is first implemented and validated, then compared with another minimal computing system using equivalent workloads.
 
 Research Questions
 1. RQ1: How does the developed system differ from another minimal system in execution cycles, dynamic instruction count, CPI, IPC, branches, memory activity, and machine-code size?
 2. RQ2: Which architectural design choices explain the observed differences?
 
+RQ1
 Metrics
 The following metrics are used:
 
@@ -24,9 +26,21 @@ The following metrics are used:
 Benchmarking
 Both systems execute the same algorithms using equivalent inputs and expected outputs. Different assembly code is allowed because the systems may use different ISAs.
 
+RQ2
 Comparative Analysis
 The collected values for execution cycles, dynamic instruction count, CPI, IPC, branch count, memory reads, memory writes, total memory accesses, static instruction count, and machine-code size are compared between the two systems.
 Measured differences are then explained through architectural characteristics such as ISA design, register organisation, datapath structure, memory organisation, and control logic.
+
+System 1. Authors computer with module that makes the statics is Competitor_pair file and calleed AuthorsComputer.circ
+System 2. Mano machine from TabishShahMohsin is located within Competitor_pair file, presented as a seperate file called Basic-Computer, to get to the actual computer, one must follow this path:
+Thesis_logs/7_Analysis_Results/Competitor_pair/Basic-Computer/src/04-Datapath/BasicComputerStats.circ
+The file Basic-computer is necessary to compile the circuit. This repo was made such that everything feels very accessible, however logisim doesn't allow a library to be used if it was used in an already imported library.
+So if you are trying to re-create this probably should make everything in a single file with different circuits. Or forcefully import by writing the import statement in the .circ file.
+
+
+Algorithms used in the comparatice evaluation to explore architectural differences are in the Workload file.
+Workload file has an about section with all the detailes on how to run each file and how to obtain statistics in circuits. 
+
 
 The analysis follows:
 Observed Difference → Architectural Cause → Explanation
