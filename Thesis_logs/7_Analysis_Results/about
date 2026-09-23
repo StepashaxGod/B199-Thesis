@@ -31,7 +31,7 @@ Comparative Analysis
 The collected values for execution cycles, dynamic instruction count, CPI, IPC, branch count, memory reads, memory writes, total memory accesses, static instruction count, and machine-code size are compared between the two systems.
 Measured differences are then explained through architectural characteristics such as ISA design, register organisation, datapath structure, memory organisation, and control logic.
 
-System 1. Authors computer is presented in two formats:first one is in the 5th file of this repository - 5_computer_architecture and called computer, becauase its the baseline model that beaks down abstraction of modern systems;
+System 1. Authors computer is presented in two formats:first one is in the 5th file of this repository - 5_computer_architecture and called computer, because its the baseline model that beaks down abstraction of modern systems;
 second computer is called AuthorsComputer.circ and is presented with a seperate statistics unit that examines measurements.  
 
 System 2. Mano machine from TabishShahMohsin is located within Competitor_pair file, presented as a seperate file called Basic-Computer, to get to the actual computer, one must follow this path:
